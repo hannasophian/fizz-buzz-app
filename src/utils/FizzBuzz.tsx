@@ -1,13 +1,19 @@
 import { useState } from "react";
+import { fizzBuzzDemo } from "./fizz-buzz-demo";
 
 export default function FizzBuzz(): JSX.Element {
-    const [numArr, setnumArr] = useState<number[]>([1]);
+  const [numArr, setNumArr] = useState<string[]>(["1"]);
 
-    return (
-        <>
-            <h1>FizzBuzz App</h1>
-            <p>{numArr}</p>
-            <button>Next</button>
-        </>
-    )
+  const handleNextNumber = () => {
+    setNumArr(fizzBuzzDemo(numArr));
+    console.log(numArr);
+  };
+
+  return (
+    <>
+      <h1>FizzBuzz App</h1>
+      <p>{numArr.join(", ")}</p>
+      <button onClick={handleNextNumber}>Next</button>
+    </>
+  );
 }
